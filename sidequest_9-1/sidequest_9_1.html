@@ -1,0 +1,56 @@
+<HTML>
+<HEAD><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></HEAD>
+<BODY>
+<script language="JavaScript" src="lib/list.js"></script>
+<script language="JavaScript" src="lib/misc.js"></script>
+<script language="JavaScript" src="lib/jsonEncode.js"></script>
+<script language="JavaScript" src="lib/jediscript-week-5.js"></script>
+<script language="JavaScript" src="lib/dropzone.js"></script>
+<script language="JavaScript" src="lib/rsa-9.js"></script>
+<script language="JavaScript" src="lib/sidequest_9-1_lib.js"></script>
+<script language="JavaScript">
+makeDropZone(document.querySelector('body'), function (data) {
+  parse_and_evaluate(data);
+});
+</script>
+<script language="JavaScript">
+(function() {
+var initialised = false;
+var exports =
+    [['int2bigInt', 'str2bigInt', 'bigInt2str', 'equalsInt', 'equals', 'isZero', 'add', 'sub', // from BigInt.js
+      'mult', 'powMod', 'mod', 'modInt', 'isNegative', 'findPrimes', 'addInt', 'greater', 'GCD', // from BigInt.js
+      'is_even', 'int_to_string', 'string_to_int', 'int_to_bigInt', 'str_to_bigInt', 'bigInt_to_int',
+      'bigInt_GCD_is_1', 'quotient', 'remainder', 'square', 'string_to_list', 'list_to_string_without_brackets', 'make_string',
+      'string_append', 'modulo', 'positify', 'integer_to_char', 'apply', 'append2', 'expmod', 'make_key', 'key_modulus',
+      'key_exponent', 'RSA_transform', 'choose_prime', 'search_for_prime', 'choose_random', 'prime_test', 'make_key_pair',
+      'key_pair_public', 'key_pair_private', 'generate_RSA_key_pair', 'select_exponent', 'invert_modulo', 'RSA_encrypt',
+      'RSA_convert_list', 'RSA_decrypt', 'compress', 'smallest_divisor', 'find_divisor', 'is_divides', 'string_to_intlist',
+      'block_convert', 'pad_string', 'charlist_to_integer', 'intlist_to_string', 'integer_to_charlist', 'test_key_pair1',
+      'test_key_pair2', 'test_public_key2', 'test_private_key2'],
+     ['test_private_key1', 'test_public_key1', 'RSA_unconvert_list', 'Darth_public_key', 'Darth_private_key', 'Alice_public_key', 'Ben_public_key', 'Chris_public_key',
+      'David_public_key', 'Eli_public_key', 'received_mystery_message', 'received_mystery_signature']
+     ];
+function init() {
+    if (initialised)
+        return;
+
+    for (var j = 0; j < 2; ++j) {
+        for (var i = 0; i < exports[j].length; ++i) {
+            exportSymbol(exports[j][i], window[exports[j][i]]);
+        }
+    }
+    exportSymbol('string_to_list', string_to_list);
+    exportSymbol('list_to_string_without_brackets', list_to_string_without_brackets);
+    exportSymbol('string_append', string_append);
+    exportSymbol('is_alpha', is_alpha);
+    exportSymbol('char_code', char_code);
+    exportSymbol('uppercase', uppercase);
+    exportSymbol('modulo', modulo);
+
+    initialised = true;
+}
+window.onload = init;
+})();
+</script>
+</BODY>
+</HTML>
